@@ -19,7 +19,7 @@
 int main(void)
 {
 
-	int idIncremental;
+	int idIncremental = 0;
 	int opcion;
 	eServicio listaServicio[TAM_SERVICIO]={{20000, "Limpieza", 250},
 									       {20001, "Parche",300},
@@ -32,8 +32,8 @@ int main(void)
 	setbuf(stdout, NULL );
 	do
 	{
-		printf("\nMENU PRINCIPAL\n 0. Salir\n -1. Alta");
-		utn_getEnteroSinReintentos(&opcion, "Ingrese una opcion: ", "Opcion inálida. ", 0, 1);
+		printf("\nMENU PRINCIPAL\n 0. Salir\n -1. Alta\n 2. Modificación\n -4. Mostrar");
+		utn_getEnteroSinReintentos(&opcion, "Ingrese una opcion: ", "Opcion inálida. ", 0, 4);
 
 		switch(opcion)
 		{
@@ -41,7 +41,46 @@ int main(void)
 			printf("Saliendo");
 		break;
 		case 1:
-			eTrabajo_Alta(&idIncremental, listaTrabajos,  TAM_TRABAJO, listaServicio, TAM_SERVICIO);
+
+			switch(eTrabajo_Alta(&idIncremental, listaTrabajos,  TAM_TRABAJO, listaServicio, TAM_SERVICIO))
+			{
+				case 1:
+					printf("Trabajo ingresado con éxito\n");
+				break;
+				case -1:
+					printf("X Alta cancelada\n");
+				break;
+				case 0:
+					printf("No hay espacio para cargar mas trabajos\n");
+				break;
+			}
+		break;
+
+		case 2:
+
+			switch(eTrabajo_Modificacion(listaTrabajos, TAM_TRABAJO, listaServicio, TAM_SERVICIO))
+			{
+				case 1:
+					printf("Trabajo modificado  con éxito\n");
+				break;
+				case -1:
+					printf("X Modificacion cancelada\n");
+				break;
+				case 0:
+					printf("Aun no hay trabajos dados de alta\n");
+				break;
+			}
+		break;
+		case 4:
+			if(eTrabajo_MostrarTodos(listaTrabajos, TAM_TRABAJO, listaServicio, TAM_SERVICIO) == 1)
+			{
+				printf("Lista\n");
+			}
+			else
+			{
+				printf("Debe cargar al menos 1 producto");
+			}
+
 		break;
 		}
 	}while(opcion != 0);

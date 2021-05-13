@@ -18,7 +18,7 @@ void MostrarTodosLosServicios(eServicio listaServicio[], int tamServ)
 }
 
 
-int ObtenerIdTipoDelIndex(eServicio listaServicio[], int tamServ, int* idServ)
+int ObtenerIdServicioDelIndex(eServicio listaServicio[], int tamServ, int* idServ)
 {
 	int index;
 	int retorno = -1;
@@ -29,4 +29,22 @@ int ObtenerIdTipoDelIndex(eServicio listaServicio[], int tamServ, int* idServ)
 		retorno = 1;
 	}
 	return retorno;
+}
+
+
+
+eServicio BuscarIdServicio(eServicio listaServicio[], int tamNac, int buscarId)
+{
+	int i;
+	eServicio miNac;
+
+	for(i=0; i<tamNac; i++)
+	{
+		if(listaServicio[i].id == buscarId)
+		{
+			miNac = listaServicio[i];
+			break;
+		}
+	}
+	return miNac;
 }

@@ -54,5 +54,14 @@ void eTrabajo_Inicializar(eTrabajo array[], int TAM);
  */
 int eTrabajo_ObtenerIndexLibre(eTrabajo array[], int TAM);
 
-
+/**
+ * @fn int eTrabajo_BuscarPorID(eTrabajo[], int, int)
+ * @brief realiza una busqueda por id
+ *
+ * @param arrayarray de trabajo
+ * @param TAM tamaño de array de trabajo
+ * @param ID id a buscar
+ * @return -1 si no encontro el id. La pocision del array donde está el id si lo encontró
+ */
+int eTrabajo_BuscarPorID(eTrabajo array[], int TAM, int ID);
 #endif /* ETRABAJO_H_ */

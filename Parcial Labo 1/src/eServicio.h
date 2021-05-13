@@ -41,6 +41,17 @@ void MostrarTodosLosServicios(eServicio listaServicio[], int tamServ);
  * @param idServ puntero a dirteccion de memoria donde se va a copiar el id
  * @return -1 si no pudo obtener el id, 1 si si
  */
-int ObtenerIdTipoDelIndex(eServicio listaServicio[], int tamServ, int* idServ);
+int ObtenerIdServicioDelIndex(eServicio listaServicio[], int tamServ, int* idServ);
+
+/**
+ * @fn eServicio BuscarIdServicio(eServicio[], int, int)
+ * @brief Busca el id de servicio
+ *
+ * @param listaServicio array de servicio
+ * @param tamNac tamaño del array de servicio
+ * @param buscarId id a buscar
+ * @return el servicio con su posicion si lo encontró
+ */
+eServicio BuscarIdServicio(eServicio listaServicio[], int tamNac, int buscarId);
 
 #endif /* ESERVICIO_H_ */
