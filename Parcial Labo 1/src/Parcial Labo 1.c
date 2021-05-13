@@ -1,10 +1,6 @@
 /*
  ============================================================================
- Name        : Parcial.c
- Author      : 
- Version     :
- Copyright   : Your copyright notice
- Description : Hello World in C, Ansi-style
+ 	 	 	 Franco Sultana 		Div: "B"
  ============================================================================
  */
 
@@ -18,22 +14,24 @@
 
 int main(void)
 {
-
+	setbuf(stdout, NULL );
 	int idIncremental = 0;
 	int opcion;
-	eServicio listaServicio[TAM_SERVICIO]={{20000, "Limpieza", 250},
+	float totalServicios = 0;
+	eServicio listaServicio[TAM_SERVICIO]={{20000, "Limpieza",250},
 									       {20001, "Parche",300},
-										   {20002, "Centrado", 400},
-										   {20003, "Cadena", 350}};
-
+										   {20002, "Centrado",400},
+										   {20003, "Cadena",350}};
 	eTrabajo listaTrabajos[TAM_TRABAJO];
 
 	eTrabajo_Inicializar(listaTrabajos, TAM_TRABAJO);
-	setbuf(stdout, NULL );
+
 	do
 	{
-		printf("\nMENU PRINCIPAL\n 0. Salir\n -1. Alta\n 2. Modificación\n -3. Baja\n -4. Mostrar");
-		utn_getEnteroSinReintentos(&opcion, "Ingrese una opcion: ", "Opcion inálida. ", 0, 4);
+		printf("\nMENU PRINCIPAL\n 0. Salir\n -1. Alta\n -2. Modificación\n "
+				"-3. Baja\n -4. Mostrar trabajos\n -5. Mostrar servicios\n "
+				"-6. Calcular total por servicios prestados\n");
+		utn_getEnteroSinReintentos(&opcion, "Ingrese una opcion: ", "Opcion inválida. ", 0, 6);
 
 		switch(opcion)
 		{
@@ -55,9 +53,7 @@ int main(void)
 				break;
 			}
 		break;
-
 		case 2:
-
 			switch(eTrabajo_Modificacion(listaTrabajos, TAM_TRABAJO, listaServicio, TAM_SERVICIO))
 			{
 				case 1:
@@ -72,7 +68,6 @@ int main(void)
 			}
 		break;
 		case 3:
-
 			switch(eTrabajo_Baja(listaTrabajos, TAM_TRABAJO))
 			{
 				case 1:
@@ -95,6 +90,20 @@ int main(void)
 			else
 			{
 				printf("Debe cargar al menos 1 producto");
+			}
+
+		break;
+		case 5:
+			MostrarTodosLosServicios(listaServicio, TAM_SERVICIO);
+		break;
+		case 6:
+			if(CalcularTotalServicios(listaTrabajos, TAM_TRABAJO, listaServicio, TAM_SERVICIO, &totalServicios) == 1)
+			{
+				printf("Total: %.2f", totalServicios);
+			}
+			else
+			{
+				printf("Debe haber cargado al menos un trabajo");
 			}
 
 		break;

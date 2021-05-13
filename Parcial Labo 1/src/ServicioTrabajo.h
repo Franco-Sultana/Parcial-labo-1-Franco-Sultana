@@ -55,9 +55,28 @@ eTrabajo eTrabajo_ModificarUno(eTrabajo Trabajo, eServicio listaServicio[], int 
  */
 int eTrabajo_Modificacion(eTrabajo array[], int TAM, eServicio listaServicio[], int tamServ);
 
-
+/**
+ * @fn void eTrabajo_MostrarUno(eTrabajo, eServicio)
+ * @brief Muestra un trabajo
+ *
+ * @param Trabajo trabajo que se va a mostrar
+ * @param miServicio servicio que se va a mostrar
+ */
 void eTrabajo_MostrarUno(eTrabajo Trabajo, eServicio miServicio);
 
+/**
+ * @fn int eTrabajo_MostrarTodos(eTrabajo[], int, eServicio[], int)
+ * @brief Muestra la lista de los trabajos
+ *
+ * @param array array de trabajos
+ * @param TAM tamaño del array de trabajos
+ * @param listaServicio array de servicios
+ * @param tamServicio tamaño array de servicios
+ * @return 1 si pudo mostrar / 0 si no
+ */
 int eTrabajo_MostrarTodos(eTrabajo array[], int TAM, eServicio listaServicio[], int tamServicio);
+
+
+int CalcularTotalServicios(eTrabajo listaTrabajo[], int tamTrab, eServicio listaServicio[], int tamServ, float* acumulador);
 
 #endif /* SERVICIOTRABAJO_H_ */

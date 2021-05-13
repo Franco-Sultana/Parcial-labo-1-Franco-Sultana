@@ -62,11 +62,12 @@ eTrabajo eTrabajo_ModificarUno(eTrabajo Trabajo, eServicio listaServicio[], int 
 {
 	eTrabajo auxiliar = Trabajo;
 	int opcionModif;
+
+
 	do
 	{
-		printf("\nMENÚ MODIFICAR\n 1. Marca\n 2. Servicio");
+		printf("\nMENÚ MODIFICAR\n0. Salir\n 1. Marca\n 2. Servicio\n");
 		utn_getEnteroSinReintentos(&opcionModif, "Ingrese una opcion: ", "Opción inválida. ", 0, 2);
-
 		switch(opcionModif)
 		{
 		case 0:
@@ -79,8 +80,6 @@ eTrabajo eTrabajo_ModificarUno(eTrabajo Trabajo, eServicio listaServicio[], int 
 			MostrarTodosLosServicios(listaServicio, tamServ);
 			ObtenerIdServicioDelIndex(listaServicio, tamServ, &auxiliar.idServicio);
 		break;
-
-
 		}
 	}while(opcionModif != 0);
 
@@ -115,6 +114,7 @@ int eTrabajo_Modificacion(eTrabajo array[], int TAM, eServicio listaServicio[], 
 			{
 			array[i] = auxiliar;
 			retorno = 1;
+			break;
 			}
 			else
 			{
@@ -162,5 +162,27 @@ int eTrabajo_MostrarTodos(eTrabajo array[], int TAM, eServicio listaServicio[], 
 	{
 		retorno = 1;
 	}
+	return retorno;
+}
+
+
+int CalcularTotalServicios(eTrabajo listaTrabajo[], int tamTrab, eServicio listaServicio[], int tamServ, float* acumulador)
+{
+	int retorno = -1;
+	int i;
+	int j;
+	//float acumulador = 0;
+	for(i=0; i<tamTrab; i++)
+	{
+		for(j=0; j<tamServ; j++)
+		{
+			if(listaTrabajo[i].isEmpty && listaTrabajo[i].idServicio == listaServicio[j].id)
+			{
+				*acumulador = *acumulador + listaServicio[j].precio;
+				retorno =  1;
+			}
+		}
+	}
+
 	return retorno;
 }

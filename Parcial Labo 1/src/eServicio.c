@@ -13,7 +13,8 @@ void MostrarTodosLosServicios(eServicio listaServicio[], int tamServ)
 
 	for(i=0; i<tamServ; i++)
 	{
-		printf("%d. %s\n", i+1, listaServicio[i].descripcion);
+		printf("%d.\n	-Descripcion: %s\n	-Precio: %.2f\n	-ID: %d\n", i+1, listaServicio[i].descripcion,
+										listaServicio[i].precio, listaServicio[i].id);
 	}
 }
 
