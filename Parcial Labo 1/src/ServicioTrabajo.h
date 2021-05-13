@@ -76,7 +76,17 @@ void eTrabajo_MostrarUno(eTrabajo Trabajo, eServicio miServicio);
  */
 int eTrabajo_MostrarTodos(eTrabajo array[], int TAM, eServicio listaServicio[], int tamServicio);
 
-
+/**
+ * @fn int CalcularTotalServicios(eTrabajo[], int, eServicio[], int, float*)
+ * @brief calcula el total por sevicios prestados
+ *
+ * @param listaTrabajo array de trabajos
+ * @param tamTrab tamaño del array de trabajos
+ * @param listaServicio array de servicios
+ * @param tamServ tamaño array de servicios
+ * @param acumulador puntero a espacio de memoria donde se va a copiar el acumulador
+ * @return
+ */
 int CalcularTotalServicios(eTrabajo listaTrabajo[], int tamTrab, eServicio listaServicio[], int tamServ, float* acumulador);
 
 #endif /* SERVICIOTRABAJO_H_ */
